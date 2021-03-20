@@ -16,7 +16,6 @@ export function FeedBackProvider(props) {
   const postFeedBack = async (payload) => {
     const res = await axios.post(`${API_URL}/save`, payload);
     setState((prevState) => ({ ...prevState, isPosted: true }));
-    console.log('');
   };
 
   const resetIsPosted = () => {
@@ -28,11 +27,13 @@ export function FeedBackProvider(props) {
 
   useEffect(() => {
     if (socket == null) return;
-    socket.on('receive-postedProblem', ({ postedFeedback }) => {
-      setState((prevState) => ({
-        ...prevState,
-        problems: [...prevState.feedbacks, postedFeedback],
-      }));
+    console.log('socket', socket);
+    socket.on('receive-postedFeedback', ({ message }) => {
+      console.log('postedFeedback', message);
+      // setState((prevState) => ({
+      //   ...prevState,
+      //   problems: [...prevState.feedbacks, postedFeedback],
+      // }));
     });
   }, [socket]);
 

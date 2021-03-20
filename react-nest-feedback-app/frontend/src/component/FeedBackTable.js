@@ -4,13 +4,13 @@ import { useFeedBackContext } from '../context/FeedBackContext';
 export default function FeedBackTable() {
   const { feedbacks } = useFeedBackContext();
 
-  console.log('problems', feedbacks);
+  console.log('feedbacks', feedbacks);
   return (
     <div>
-      <ListGroup as="ul">
+      <ListGroup as="ul" key="feedbacklist">
         {feedbacks.map((feedback) => {
           return (
-            <ListGroup.Item as="li">
+            <ListGroup.Item as="li" key={feedback.id}>
               <h3>{feedback.issue}</h3>
               <p>{feedback.comment}</p>
             </ListGroup.Item>

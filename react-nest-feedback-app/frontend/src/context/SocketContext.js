@@ -5,9 +5,10 @@ export const useSocketContext = () => useContext(SocketContext);
 export function SocketProvider({ children }) {
   const [socket, setSocket] = useState();
   useEffect(() => {
-    
-    const newSocket = io('http://localhost:3500', {});
-    setSocket(() => newSocket);
+   
+    const newSocket = io('http://localhost:3500');
+    console.log('newSocket', newSocket);
+    setSocket(newSocket);
     return () => newSocket.close();
   }, []);
 

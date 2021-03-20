@@ -36,7 +36,7 @@ export default function FeedBackForm() {
             type="text"
             id="comment"
             as="textarea"
-            resizeable={false}
+            resizeable="false"
             onChange={handleChange}
           />
         </Form.Group>
